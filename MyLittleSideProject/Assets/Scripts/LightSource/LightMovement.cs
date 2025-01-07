@@ -12,7 +12,7 @@ public class LightMovement : MonoBehaviour
     private void Update()
     {
         //Logic to check if the light is following the Player or the Mouse Button
-        if (Input.GetKeyDown(KeyCode.Mouse1) && followingMouse)
+        if ((Input.GetKeyDown(KeyCode.Mouse1) && followingMouse) || DialogueManager.GetInstance().playingDialogue)
         {
             followingMouse = false;
         }
@@ -20,6 +20,7 @@ public class LightMovement : MonoBehaviour
         {
             followingMouse = true;
         }
+
         if (followingMouse)
         {
             followMouse();

@@ -11,11 +11,11 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange)
+        if (playerInRange && !DialogueManager.GetInstance().playingDialogue)
         {
             if (interaction.interacting)
             {
-                Debug.Log(dialogue.text);
+                DialogueManager.GetInstance().EnterDialogue(dialogue);
             }  
         }
     }

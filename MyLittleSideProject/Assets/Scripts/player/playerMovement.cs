@@ -7,6 +7,7 @@ public class playerMovement : MonoBehaviour
 {
     [SerializeField] private Vector2 playerVelocity;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private RigidbodyConstraints2D rbConstraints;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float playerMovementSpeed = 5f;
     [SerializeField] private float jumpForce = 10;
@@ -20,6 +21,10 @@ public class playerMovement : MonoBehaviour
     
     void FixedUpdate()
     {
+        if (DialogueManager.GetInstance().playingDialogue)
+        {
+            return;
+        }
         playerSprint();
         movementController();
         flipPlayer();
@@ -27,6 +32,11 @@ public class playerMovement : MonoBehaviour
     
     void Update()
     {
+        if (DialogueManager.GetInstance().playingDialogue)
+        {
+            return;
+        }
+
         playerJump();
     }
 
